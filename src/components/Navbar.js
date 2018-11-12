@@ -13,7 +13,15 @@ class Navbar extends Component {
     if (this.props.authenticated) {
       return [
         // <li key="secret"><Link to="/secret">Secret</Link></li>,
-        <li key="signout"><Link to="/signin" onClick={this.logout}>Sign out</Link></li>
+        <div>
+          <Link class="link" to="/home">Home</Link>
+          <Link class="link" to="/leaderboard">Leader Board</Link>
+          <Link class="link" to="/newquestion">New Question</Link>
+          <Link class="link" to="/signin" onClick={this.logout}>Sign out</Link>
+
+        </div>
+
+
       ];
     }
     return [

@@ -5,6 +5,8 @@ import Leaderboard from './components/Leaderboard';
 import NewQuestion from './components/NewQuestion';
 import Navbar from './components/Navbar';
 import Signin from './components/Signin';
+import Home from './components/Home';
+
 import reduxThunk from 'redux-thunk';
 
 import { createStore, applyMiddleware } from 'redux';
@@ -46,6 +48,7 @@ ReactDOM.render
                     <Route path="/secret" component={requireAuth(SecretPage)} /> */}
                     <Route path="/app" component={App} exact />
                     <Route path="/signin" component={noRequireAuth(Signin)} exact />
+                    <Route path="/home" component={requireAuth(Home)} exact />
                     <Route path="/leaderboard" component={requireAuth(Leaderboard)} exact />
                     <Route path="/newquestion" component={requireAuth(NewQuestion)} exact />
                 </Switch>
