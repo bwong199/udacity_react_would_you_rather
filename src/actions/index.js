@@ -53,15 +53,21 @@ export function _getUsers() {
     } 
 }
 
+// function uuid() {
+//     return crypto.getRandomValues(new Uint32Array(4)).join('-');
+// }
 
-export function signInAction({ email, password }, history) {
+export function signInAction(user, history) {
     return async (dispatch) => {
         try {
-            const res = await axios.post(`${URL}/signin`, { email, password });
-
-            dispatch({ type: AUTHENTICATED });
-            localStorage.setItem('user', res.data.token);
-            history.push('/secret');
+            // const res = await axios.post(`${URL}/signin`, { email, password });
+            
+            dispatch({ 
+                type: AUTHENTICATED,
+                user 
+            })
+            localStorage.setItem('user', user);
+            history.push('/');
         } catch (error) {
             dispatch({
                 type: AUTHENTICATION_ERROR,

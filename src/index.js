@@ -44,7 +44,7 @@ ReactDOM.render
                     <Route path="/signup" component={noRequireAuth(Signup)} />
                     <Route path="/signout" component={requireAuth(Signout)} />
                     <Route path="/secret" component={requireAuth(SecretPage)} /> */}
-                    <Route path="/" component={App} exact />
+                    <Route path="/app" component={App} exact />
                     <Route path="/signin" component={noRequireAuth(Signin)} exact />
                     <Route path="/leaderboard" component={requireAuth(Leaderboard)} exact />
                     <Route path="/newquestion" component={requireAuth(NewQuestion)} exact />

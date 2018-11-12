@@ -5,7 +5,8 @@ export default function (state = {}, action) {
         case GET_USERS:
             return {...state, ['users']: action.users }
         case AUTHENTICATED:
-            return { ...state, authenticated: true };
+            console.log(action);
+            return { ...state, authenticated: true, signedInUser: action.user };
         case UNAUTHENTICATED:
             return { ...state, authenticated: false };
         case AUTHENTICATION_ERROR:
