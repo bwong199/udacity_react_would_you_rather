@@ -1,9 +1,12 @@
-import { AUTHENTICATED, UNAUTHENTICATED, AUTHENTICATION_ERROR, GET_USERS } from '../actions';
+import { AUTHENTICATED, UNAUTHENTICATED, AUTHENTICATION_ERROR, GET_USERS, GET_USER } from '../actions';
 
 export default function (state = {}, action) {
     switch (action.type) {
         case GET_USERS:
-            return {...state, ['users']: action.users }
+            console.log(action.users);
+            return { ...state, ['users']: action.users }
+        case GET_USER:
+            return { ...state, ['user']: action.thisUser }
         case AUTHENTICATED:
             console.log(action);
             return { ...state, authenticated: true, signedInUser: action.user };

@@ -4,6 +4,7 @@ export const AUTHENTICATED = 'authenticated_user';
 export const UNAUTHENTICATED = 'unauthenticated_user';
 export const AUTHENTICATION_ERROR = 'authentication_error';
 export const GET_USERS = 'get_users';
+export const GET_USER = 'get_user';
 
 const URL = 'http://www.sample-website.com';
 let users = [
@@ -22,7 +23,7 @@ let users = [
        {
         id: 'tylermcginnis',
         name: 'Tyler McGinnis',
-        avatarURL: 'https://cdn0.iconfinder.com/data/icons/avatar-15/512/ninja-512.png',
+        avatarURL: 'https://cdn1.iconfinder.com/data/icons/avatars-55/100/avatar_profile_user_music_headphones_shirt_cool-512.png',
         answers: {
           "vthrdm985a262al8qx3do": 'optionOne',
           "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -53,6 +54,30 @@ export function _getUsers() {
     } 
 }
 
+export function getUser(userID){
+
+    let thisUser = [];
+
+    return function(dispatch){
+        new Promise((res, rej) => {
+            thisUser = users.filter(function(user){
+                return user.id == userID;
+            })
+        
+            thisUser = thisUser[0];
+        
+            return thisUser;        }).then(dispatch({
+            type: GET_USER,
+            thisUser
+        }))
+    } 
+
+
+
+
+
+}
+
 // function uuid() {
 //     return crypto.getRandomValues(new Uint32Array(4)).join('-');
 // }
@@ -67,7 +92,7 @@ export function signInAction(user, history) {
                 user 
             })
             localStorage.setItem('user', user);
-            history.push('/');
+            history.push('/app');
         } catch (error) {
             dispatch({
                 type: AUTHENTICATION_ERROR,

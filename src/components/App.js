@@ -3,6 +3,7 @@ import '../styles/index.css';
 import { connect } from 'react-redux';
 
 class App extends Component {
+
     render() {
         return (
             <div>
@@ -16,9 +17,6 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state.auth.signedInUser);
-
-
 
     if(state.auth.signedInUser == null){
         const userFromStorage = localStorage.getItem("user");
