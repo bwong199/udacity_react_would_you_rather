@@ -1,3 +1,16 @@
 .link {
     margin: 5px;
 }
+
+#leaderBoardImg{
+    height: 30px;
+    width: 30px;
+}
+
+.card {
+    border: 1px;
+    border-style: solid;
+    width: 18rem;
+    margin-bottom: 10px;
+    padding: 10px;
+}

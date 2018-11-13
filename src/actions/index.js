@@ -33,7 +33,7 @@ let users = [
       {
         id: 'johndoe',
         name: 'John Doe',
-        avatarURL: 'https://freeiconshop.com/wp-content/uploads/edd/person-outline-filled.png',
+        avatarURL: 'https://cdn3.iconfinder.com/data/icons/avatars-15/64/_Ninja-2-512.png',
         answers: {
           "xj352vofupe1dqz9emx13r": 'optionOne',
           "vthrdm985a262al8qx3do": 'optionTwo',

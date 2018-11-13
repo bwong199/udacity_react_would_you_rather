@@ -49,6 +49,8 @@ class Navbar extends Component {
   }
 
   componentDidMount() {
+
+    
     const user = this.props.getUser(this.props.user);
     console.log(user);
   }
