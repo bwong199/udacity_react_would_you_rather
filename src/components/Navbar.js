@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { signOutAction } from '../actions';
-import { getUser } from '../actions';
+import { getUser, _getUsers } from '../actions';
 
 class Navbar extends Component {
 
+
+  componentWillMount(){
+    this.props._getUsers();
+  }
 
   constructor(props) {
     super(props);
@@ -49,10 +53,7 @@ class Navbar extends Component {
   }
 
   componentDidMount() {
-
-    
     const user = this.props.getUser(this.props.user);
-    console.log(user);
   }
 
   render() {
@@ -72,7 +73,6 @@ class Navbar extends Component {
 
 
 function mapStateToProps(state) {
-  console.log(state);
   if (state.auth.signedInUser == null) {
     const userFromStorage = localStorage.getItem("user")
     return {
@@ -91,5 +91,5 @@ function mapStateToProps(state) {
 
 }
 
-export default connect(mapStateToProps, { signOutAction, getUser })(Navbar);
+export default connect(mapStateToProps, { signOutAction, getUser, _getUsers })(Navbar);
 

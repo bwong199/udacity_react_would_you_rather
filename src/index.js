@@ -6,6 +6,8 @@ import NewQuestion from './components/NewQuestion';
 import Navbar from './components/Navbar';
 import Signin from './components/Signin';
 import Home from './components/Home';
+import AnsweredQuestions from './components/AnsweredQuestions';
+import UnansweredQuestions from './components/UnansweredQuestions';
 
 import reduxThunk from 'redux-thunk';
 
@@ -51,6 +53,8 @@ ReactDOM.render
                     <Route path="/home" component={requireAuth(Home)} exact />
                     <Route path="/leaderboard" component={requireAuth(Leaderboard)} exact />
                     <Route path="/newquestion" component={requireAuth(NewQuestion)} exact />
+ 
+
                 </Switch>
             </div>
         </BrowserRouter>

@@ -7,8 +7,8 @@ export const AUTHENTICATION_ERROR = 'authentication_error';
 export const GET_USERS = 'get_users';
 export const GET_USER = 'get_user';
 export const SAVE_QUESTION = 'save_question';
+export const GET_QUESTIONS = 'get_questions';
 
-const URL = 'http://www.sample-website.com';
 let users = [
     {
         id: 'sarahedo',
@@ -133,6 +133,17 @@ export function _getUsers() {
         }).then(dispatch({
             type: GET_USERS,
             users
+        }))
+    }
+}
+
+export function _getQuestions(){
+    return function (dispatch) {
+        new Promise((res, rej) => {
+            setTimeout(() => res({ ...questions }), 1000)
+        }).then(dispatch({
+            type: GET_QUESTIONS,
+            questions
         }))
     }
 }
