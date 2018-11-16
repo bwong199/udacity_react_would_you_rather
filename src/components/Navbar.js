@@ -28,19 +28,18 @@ class Navbar extends Component {
       return [
         // <li key="secret"><Link to="/secret">Secret</Link></li>,
         <div>
-          <Link class="link" to="/home">Home</Link>
-          <Link class="link" to="/leaderboard">Leader Board</Link>
-          <Link class="link" to="/newquestion">New Question</Link>
-          <Link class="link" to="/signin" onClick={this.logout}>Sign out</Link>
-          <Link class="link" to="/home">
+          <Link className="link" to="/home">Home</Link>
+          <Link className="link" to="/leaderboard">Leader Board</Link>
+          <Link className="link" to="/newquestion">New Question</Link>
+          <Link className="link" to="/signin" onClick={this.logout}>Sign out</Link>
+          <Link className="link" to="/home">
             {this.props.user ? <div>Hello {this.props.user}</div> : <div></div>
             }</Link>
-          <Link class="link" to="/home">
+          <Link className="link" to="/home">
             {this.props.user ? 
             <img src={this.props.userAvatar} alt="Smiley face" height="42" width="42"></img>
             : <div></div>
             }</Link>
-
         </div>
 
 
