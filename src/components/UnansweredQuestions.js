@@ -15,6 +15,8 @@ class UnansweredQuestions extends Component {
 
     componentDidMount() {
         this.props._getQuestions();
+        this.props._getUsers();
+
     }
 
     selectPoll(questionID, choice) {
@@ -70,7 +72,7 @@ function mapStateToProps(state) {
         console.log(results);
         return {
             unansweredQuestions: results,
-            users: state.auth.uses,
+            users: state.auth.auth,
             thisUser: state.auth.user.id
         };
     }
@@ -78,4 +80,4 @@ function mapStateToProps(state) {
 
 }
 
-export default connect(mapStateToProps, { _getQuestions, _saveQuestionAnswer })(UnansweredQuestions);
+export default connect(mapStateToProps, { _getQuestions, _saveQuestionAnswer, _getUsers })(UnansweredQuestions);

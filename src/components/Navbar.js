@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { signOutAction } from '../actions';
 import { getUser, _getUsers } from '../actions';
+import _ from 'lodash';
 
 class Navbar extends Component {
 
@@ -68,7 +69,7 @@ class Navbar extends Component {
 
 
 function mapStateToProps(state) {
-  debugger
+  debugger;
   if (state.auth.signedInUser == null) {
     const userFromStorage = localStorage.getItem("user")
     return {
@@ -77,11 +78,12 @@ function mapStateToProps(state) {
       userAvatar: state.auth.user ? state.auth.user.avatarURL : ''
         };
   } else {
-
+    debugger;
+    const signedInUser = _.find(state.auth.users, { id: state.auth.signedInUser})
     return {
       authenticated: state.auth.authenticated,
       user: state.auth.signedInUser,
-      userAvatar: state.auth.user ? state.auth.user.avatarURL : ''
+      userAvatar: state.auth.signedInUser ? signedInUser.avatarURL : ''
     };
   }
 
