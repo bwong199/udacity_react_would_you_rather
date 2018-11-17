@@ -262,7 +262,7 @@ export function signInAction(user, history) {
                 user
             })
             localStorage.setItem('user', user);
-            history.push('/app');
+            history.push('/home');
         } catch (error) {
             dispatch({
                 type: AUTHENTICATION_ERROR,

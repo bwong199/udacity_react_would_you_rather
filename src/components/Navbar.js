@@ -68,6 +68,7 @@ class Navbar extends Component {
 
 
 function mapStateToProps(state) {
+  debugger
   if (state.auth.signedInUser == null) {
     const userFromStorage = localStorage.getItem("user")
     return {

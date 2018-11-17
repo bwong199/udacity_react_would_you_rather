@@ -38,6 +38,7 @@ class Signin extends Component {
 
   submit = (event) => {
     event.preventDefault();
+    debugger;
     const userID = this.state.user;
     this.props.signInAction(userID, this.props.history);
   }

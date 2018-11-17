@@ -43,11 +43,6 @@ ReactDOM.render
             <div className="container">
                 <Navbar />
                 <Switch>
-                    {/* <Route exact path="/" component={Homepage} /> */}
-                    {/* <Route path="/signin" component={noRequireAuth(Signin)} />
-                    <Route path="/signup" component={noRequireAuth(Signup)} />
-                    <Route path="/signout" component={requireAuth(Signout)} />
-                    <Route path="/secret" component={requireAuth(SecretPage)} /> */}
                     <Route path="/app" component={App} exact />
                     <Route path="/signin" component={noRequireAuth(Signin)} exact />
                     <Route path="/home" component={requireAuth(Home)} exact />

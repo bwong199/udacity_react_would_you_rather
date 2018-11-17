@@ -15,6 +15,7 @@ class Home extends Component {
 
     componentDidMount() {
         this.props._getQuestions();
+        this.props._getUsers();
       }
     
 
@@ -44,4 +45,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, {_getQuestions})(Home);
+export default connect(mapStateToProps, {_getQuestions, _getUsers})(Home);
