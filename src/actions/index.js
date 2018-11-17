@@ -8,6 +8,7 @@ export const GET_USERS = 'get_users';
 export const GET_USER = 'get_user';
 export const SAVE_QUESTION = 'save_question';
 export const GET_QUESTIONS = 'get_questions';
+export const SAVE_ANSWER = 'save_answer';
 
 let users = [
     {
@@ -144,6 +145,31 @@ export function _getQuestions(){
         }).then(dispatch({
             type: GET_QUESTIONS,
             questions
+        }))
+    }
+}
+
+export function _saveQuestionAnswer(authedUser, qid, answer){
+    return function (dispatch) {
+        new Promise((res, rej) => {
+
+            setTimeout(function(){ 
+                
+                let selectedUser = _.find(users, {id : authedUser})
+                console.log(selectedUser.answers);
+                if(answer == "optionOne"){
+                    questions[qid].optionOne.votes.push(authedUser) 
+                    selectedUser.answers[qid] = "optionOne"
+                } else {
+                    questions[qid].optionTwo.votes.push(authedUser) 
+                    selectedUser.answers[qid] = "optionTwo"
+                }        
+                console.log(selectedUser.answers);
+        }, 500);
+            
+        }).then(dispatch({
+            type: SAVE_ANSWER,
+            payload: [questions, users]
         }))
     }
 }

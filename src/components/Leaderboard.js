@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/index.css';
-import { _getUsers } from '../actions';
+import { _getUsers, _getQuestions } from '../actions';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
@@ -8,6 +8,7 @@ class Leaderboard extends Component {
 
     componentWillMount() {
         this.props._getUsers();
+        this.props._getQuestions();
     }
 
     render() {
@@ -69,4 +70,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, { _getUsers })(Leaderboard);
+export default connect(mapStateToProps, { _getUsers, _getQuestions })(Leaderboard);

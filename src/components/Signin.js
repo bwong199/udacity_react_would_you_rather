@@ -16,11 +16,6 @@ class Signin extends Component {
     this.props._getUsers();
   }
 
-  // submit = (values) => {
-  //   console.log(values);
-  //   this.props.signInAction(values, this.props.history);
-  // }
-
   errorMessage() {
     if (this.props.errorMessage) {
       return (

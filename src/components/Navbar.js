@@ -26,7 +26,6 @@ class Navbar extends Component {
   navbarLinks() {
     if (this.props.authenticated) {
       return [
-        // <li key="secret"><Link to="/secret">Secret</Link></li>,
         <div>
           <Link className="link" to="/home">Home</Link>
           <Link className="link" to="/leaderboard">Leader Board</Link>
@@ -45,10 +44,7 @@ class Navbar extends Component {
 
       ];
     }
-    return [
-      <li key="signin"><Link to="/signin">Sign in</Link></li>,
-      // <li key="signup"><Link to="/signup">Sign up</Link></li>
-    ];
+  
   }
 
   componentDidMount() {

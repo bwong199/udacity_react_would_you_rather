@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/index.css';
 import { Form, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
-import { _saveQuestion } from '../actions';
+import { _saveQuestion, _getQuestions } from '../actions';
 import { connect } from 'react-redux';
 
 class NewQuestion extends Component {
@@ -84,4 +84,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, { _saveQuestion })(NewQuestion);
+export default connect(mapStateToProps, { _saveQuestion, _getQuestions })(NewQuestion);
