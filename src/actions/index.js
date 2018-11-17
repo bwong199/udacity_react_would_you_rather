@@ -149,7 +149,7 @@ export function _getQuestions(){
     }
 }
 
-export function _saveQuestionAnswer(authedUser, qid, answer){
+export function _saveQuestionAnswer(authedUser, qid, answer, callback){
     return function (dispatch) {
         new Promise((res, rej) => {
 
@@ -169,7 +169,7 @@ export function _saveQuestionAnswer(authedUser, qid, answer){
         }).then(dispatch({
             type: SAVE_ANSWER,
             payload: [questions, users]
-        }))
+        })).then(() => callback());
     }
 }
 

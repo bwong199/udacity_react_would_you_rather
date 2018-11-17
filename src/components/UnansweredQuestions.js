@@ -63,19 +63,14 @@ class UnansweredQuestions extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log('before ' , state);
 
     if (state.auth.user) {
-             console.log('after ' ,state);
-
-        console.log('state.auth.user')
         let answered = state.auth.user.answers
 
         const answers = Object.keys(answered)
         const questions = state.questions.questions;
 
         var results = questions.filter(item => !answers.includes(item.id))
-        console.log(results);
         return {
             unansweredQuestions: results,
             users: state.auth.auth,
