@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { signInAction } from '../actions';
-import { _getUsers } from '../actions';
+import { _getUsers, _getQuestions } from '../actions';
 
 import { connect } from 'react-redux';
 
@@ -14,6 +14,7 @@ class Signin extends Component {
   }
   componentDidMount() {
     this.props._getUsers();
+    this.props._getQuestions();
   }
 
   errorMessage() {
@@ -32,13 +33,11 @@ class Signin extends Component {
     this.setState(state => {
       state.user = value
    }, ()=>{
-    console.log(this.state.user);
    });
   }
 
   submit = (event) => {
     event.preventDefault();
-    debugger;
     const userID = this.state.user;
     this.props.signInAction(userID, this.props.history);
   }
@@ -81,4 +80,4 @@ const reduxFormSignin = reduxForm({
   form: 'signin'
 })(Signin);
 
-export default connect(mapStateToProps, { signInAction, _getUsers })(reduxFormSignin);
+export default connect(mapStateToProps, { signInAction, _getUsers, _getQuestions })(reduxFormSignin);

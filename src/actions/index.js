@@ -156,7 +156,6 @@ export function _saveQuestionAnswer(authedUser, qid, answer){
             setTimeout(function(){ 
                 
                 let selectedUser = _.find(users, {id : authedUser})
-                console.log(selectedUser.answers);
                 if(answer == "optionOne"){
                     questions[qid].optionOne.votes.push(authedUser) 
                     selectedUser.answers[qid] = "optionOne"
@@ -170,26 +169,6 @@ export function _saveQuestionAnswer(authedUser, qid, answer){
         }).then(dispatch({
             type: SAVE_ANSWER,
             payload: [questions, users]
-        }))
-    }
-}
-
-export function getUser(userID) {
-
-    let thisUser = [];
-
-    return function (dispatch) {
-        new Promise((res, rej) => {
-            thisUser = users.filter(function (user) {
-                return user.id == userID;
-            })
-
-            thisUser = thisUser[0];
-
-            return thisUser;
-        }).then(dispatch({
-            type: GET_USER,
-            thisUser
         }))
     }
 }
@@ -253,13 +232,22 @@ export function _saveQuestion(question) {
 // }
 
 export function signInAction(user, history) {
+
+    let thisUser = [];
+
     return async (dispatch) => {
         try {
             // const res = await axios.post(`${URL}/signin`, { email, password });
+            thisUser = users.filter(function (aUser) {
+                return aUser.id == user;
+            })
 
+            thisUser = thisUser[0];
             dispatch({
                 type: AUTHENTICATED,
-                user
+                // payload: { questions, users, user}
+
+                payload : { user, thisUser}
             })
             localStorage.setItem('user', user);
             history.push('/home');
@@ -270,6 +258,26 @@ export function signInAction(user, history) {
             });
         }
     };
+}
+
+export function getUser(userID) {
+
+    let thisUser = [];
+
+    return function (dispatch) {
+        new Promise((res, rej) => {
+            thisUser = users.filter(function (user) {
+                return user.id == userID;
+            })
+
+            thisUser = thisUser[0];
+
+            return thisUser;
+        }).then(dispatch({
+            type: GET_USER,
+            thisUser
+        }))
+    }
 }
 
 export function signOutAction() {

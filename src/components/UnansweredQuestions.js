@@ -21,6 +21,7 @@ class UnansweredQuestions extends Component {
 
     selectPoll(questionID, choice) {
         this.props._saveQuestionAnswer(this.props.thisUser, questionID, choice)
+        this.props.unansweredQuestions.filter(item => item.id != questionID);
     }
 
     render() {
@@ -62,7 +63,12 @@ class UnansweredQuestions extends Component {
 }
 
 function mapStateToProps(state) {
+    console.log('before ' , state);
+
     if (state.auth.user) {
+             console.log('after ' ,state);
+
+        console.log('state.auth.user')
         let answered = state.auth.user.answers
 
         const answers = Object.keys(answered)
@@ -76,7 +82,6 @@ function mapStateToProps(state) {
             thisUser: state.auth.user.id
         };
     }
-
 
 }
 

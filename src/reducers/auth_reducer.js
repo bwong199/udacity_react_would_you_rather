@@ -7,7 +7,12 @@ export default function (state = {}, action) {
         case GET_USER:
             return { ...state, ['user']: action.thisUser }
         case AUTHENTICATED:
-            return { ...state, authenticated: true, signedInUser: action.user };
+        console.log(action.payload)
+        if(action.payload){
+            return { ...state, authenticated: true, signedInUser: action.payload.user, ['user']: action.payload.thisUser };
+
+        }
+        return { ...state, authenticated: true};
         case UNAUTHENTICATED:
             return { ...state, authenticated: false };
         case AUTHENTICATION_ERROR:

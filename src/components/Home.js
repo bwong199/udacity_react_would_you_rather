@@ -14,21 +14,27 @@ class Home extends Component {
     }
 
     componentDidMount() {
+
+        console.log('component did mount');
         this.props._getQuestions();
         this.props._getUsers();
-      }
-    
+    }
+
+
+    handleClick(show) {
+        this.setState({ showAnsweredQuestions: show })
+    }
 
     render() {
         return (
             <div>
-                <a onClick={() => this.setState({ showAnsweredQuestions: true })}>Answered Questions</a>
+                <a onClick={() => this.handleClick(true)}>Answered Questions</a>
                 {"   "}
-                <a onClick={() => this.setState({ showAnsweredQuestions: false })}>Unanswered Questions</a>
+                <a onClick={() => this.handleClick(false)}>Unanswered Questions</a>
 
                 {
                     this.state.showAnsweredQuestions ?
-                        <AnsweredQuestions questions={this.props.questions}/> :
+                        <AnsweredQuestions /> :
                         <UnansweredQuestions />
                 }
             </div>
@@ -38,11 +44,16 @@ class Home extends Component {
 
 
 function mapStateToProps(state) {
-    
+    // console.log(state.questions);
+
+    // if(Object.keys(state.questions).length == 0){
+    //     console.log('empty');
+    // }
+
     return {
         questions: state.questions
     };
 }
 
 
-export default connect(mapStateToProps, {_getQuestions, _getUsers})(Home);
+export default connect(mapStateToProps, { _getQuestions, _getUsers })(Home);

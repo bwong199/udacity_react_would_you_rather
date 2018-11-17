@@ -41,11 +41,15 @@ class Navbar extends Component {
             : <div></div>
             }</Link>
         </div>
-
-
+    
       ];
+
+
     }
-  
+    return [
+      <Link className="link" to="/signin" onClick={this.signedInUser}>Sign In</Link>
+
+     ]
   }
 
   componentDidMount() {
@@ -69,7 +73,6 @@ class Navbar extends Component {
 
 
 function mapStateToProps(state) {
-  debugger;
   if (state.auth.signedInUser == null) {
     const userFromStorage = localStorage.getItem("user")
     return {
@@ -78,7 +81,6 @@ function mapStateToProps(state) {
       userAvatar: state.auth.user ? state.auth.user.avatarURL : ''
         };
   } else {
-    debugger;
     const signedInUser = _.find(state.auth.users, { id: state.auth.signedInUser})
     return {
       authenticated: state.auth.authenticated,

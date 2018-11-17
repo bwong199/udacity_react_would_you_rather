@@ -16,6 +16,8 @@ class AnsweredQuestions extends Component {
 
     componentDidMount() {
         this.props._getQuestions();
+        this.props._getUsers();
+
     }
 
 
@@ -88,7 +90,7 @@ class AnsweredQuestions extends Component {
 
 function mapStateToProps(state) {
 
-    if(state.auth.user){
+    if(state.auth.user && state.questions.questions){
         let answered = state.auth.user.answers
 
 
@@ -106,4 +108,4 @@ function mapStateToProps(state) {
 
 }
 
-export default connect(mapStateToProps, { _getQuestions })(AnsweredQuestions);
+export default connect(mapStateToProps, { _getQuestions , _getUsers })(AnsweredQuestions);

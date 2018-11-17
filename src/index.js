@@ -48,7 +48,7 @@ ReactDOM.render
                     <Route path="/home" component={requireAuth(Home)} exact />
                     <Route path="/leaderboard" component={requireAuth(Leaderboard)} exact />
                     <Route path="/newquestion" component={requireAuth(NewQuestion)} exact />
- 
+
 
                 </Switch>
             </div>
