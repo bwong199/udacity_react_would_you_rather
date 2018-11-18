@@ -120,7 +120,8 @@ let users = [
   }
   
   export function _getAnsweredQuestioned(){
-    
+
+      
   }
 
   export function _getUsers () {

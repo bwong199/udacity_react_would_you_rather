@@ -16,8 +16,8 @@ class Home extends Component {
     componentDidMount() {
 
         console.log('component did mount');
-        this.props._getQuestions();
-        this.props._getUsers();
+        // this.props._getQuestions();
+        // this.props._getUsers();
     }
 
 

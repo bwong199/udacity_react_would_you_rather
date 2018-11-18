@@ -24,8 +24,10 @@ class NewQuestion extends Component {
             optionTwoText: this.state.option2
         }
 
-        this.props._saveQuestion(question)
-
+        this.props._saveQuestion(question, this.props.history, () => {
+            this.props._getQuestions();
+            // this.props._getUsers();
+        });
 
         this.setState({ option1: ""})
         this.setState({ option2: ""})

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import '../styles/index.css';
 import { connect } from 'react-redux';
-import { _getQuestions, _getUsers } from '../actions';
+import { _getQuestions, _getUsers, _getPoll } from '../actions';
 import _ from 'lodash';
+import { Link } from 'react-router-dom';
 
 class AnsweredQuestions extends Component {
 
@@ -22,12 +23,12 @@ class AnsweredQuestions extends Component {
 
 
     showPoll(selectedPoll) {
-        console.log('show poll');
-
         var selectedPoll = this.props.answeredQuestions.find(obj => obj.id == selectedPoll);
         this.setState({ selectedPoll: selectedPoll, showPoll: true })
+    }
 
-        console.log(this.state.selectedPoll);
+    getPoll(pollID){
+        this.props._getPoll(pollID);
     }
 
     render() {
@@ -49,7 +50,11 @@ class AnsweredQuestions extends Component {
                                             2)                       {question.optionTwo.text}
 
                                             <br />
-                                            <a onClick={() => this.showPoll(question.id)}>Show Poll</a>
+                                            {/* <a onClick={() => this.showPoll(question.id)}>Show Poll</a> */}
+
+                                            <Link onClick={ () => this.getPoll(question.id)} to={`pollResult/${question.id}`}>
+                                                Show results
+                                            </Link>
                                             <br />
                                             <br />
 
@@ -90,7 +95,7 @@ class AnsweredQuestions extends Component {
 
 function mapStateToProps(state) {
 
-    if(state.auth.user && state.questions.questions){
+    if (state.auth.user && state.questions.questions) {
         let answered = state.auth.user.answers
 
 
@@ -108,4 +113,4 @@ function mapStateToProps(state) {
 
 }
 
-export default connect(mapStateToProps, { _getQuestions , _getUsers })(AnsweredQuestions);
+export default connect(mapStateToProps, { _getQuestions, _getUsers, _getPoll })(AnsweredQuestions);

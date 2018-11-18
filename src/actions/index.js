@@ -9,6 +9,7 @@ export const GET_USER = 'get_user';
 export const SAVE_QUESTION = 'save_question';
 export const GET_QUESTIONS = 'get_questions';
 export const SAVE_ANSWER = 'save_answer';
+export const GET_POLL = 'get_poll';
 
 let users = [
     {
@@ -149,7 +150,7 @@ export function _getQuestions(){
     }
 }
 
-export function _saveQuestionAnswer(authedUser, qid, answer, callback){
+export function _saveQuestionAnswer(authedUser, qid, answer, history){
     return function (dispatch) {
         new Promise((res, rej) => {
 
@@ -163,13 +164,13 @@ export function _saveQuestionAnswer(authedUser, qid, answer, callback){
                     questions[qid].optionTwo.votes.push(authedUser) 
                     selectedUser.answers[qid] = "optionTwo"
                 }        
-                console.log(selectedUser.answers);
-        }, 500);
-            
+
+        }, 500);   
+        
         }).then(dispatch({
             type: SAVE_ANSWER,
             payload: [questions, users]
-        })).then(() => callback());
+        }))
     }
 }
 
@@ -193,7 +194,7 @@ function formatQuestion({ optionOneText, optionTwoText, author }) {
     }
 }
 
-export function _saveQuestion(question) {
+export function _saveQuestion(question, history, callback) {
 
     return function (dispatch) {
         new Promise((res, rej) => {
@@ -220,13 +221,26 @@ export function _saveQuestion(question) {
         }).then(dispatch({
             type: SAVE_QUESTION,
             payload: { questions, users}
-        }))
+        })).then(function(){
+            history.push("/home")
+            callback();
+        });
     }
-
-
-
 }
 
+export function _getPoll(pollID, callback) {
+
+    return function (dispatch) {
+        new Promise((res, rej) => {
+            dispatch({
+                type: GET_POLL,
+                payload: { questions, users, pollID}
+            })
+        }).then( () =>
+            callback()
+        )
+    }
+}
 // function uuid() {
 //     return crypto.getRandomValues(new Uint32Array(4)).join('-');
 // }
