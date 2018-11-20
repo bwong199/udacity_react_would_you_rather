@@ -27,7 +27,7 @@ class Navbar extends Component {
   navbarLinks() {
     if (this.props.authenticated) {
       return [
-        <div>
+        <div key="1">
           <Link className="link" to="/home">Home</Link>
           <Link className="link" to="/leaderboard">Leader Board</Link>
           <Link className="link" to="/newquestion">New Question</Link>

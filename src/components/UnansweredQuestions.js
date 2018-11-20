@@ -21,7 +21,6 @@ class UnansweredQuestions extends Component {
 
     selectPoll(questionID, choice) {
         this.props._saveQuestionAnswer(this.props.thisUser, questionID, choice, this.props.history, () => {
-            // debugger;
              this.props.history.push(`/pollResult/${questionID}`)            
         });
     }
@@ -36,7 +35,7 @@ class UnansweredQuestions extends Component {
                             this.props.unansweredQuestions ?
                                 this.props.unansweredQuestions.map((question, index) => {
                                     return (
-                                        <div>
+                                        <div key={index}>
                                             {question.author} asks
                                             <h5>Would you rather:</h5>
                                     <br />
@@ -79,6 +78,10 @@ function mapStateToProps(state) {
             thisUser: state.auth.user.id
         };
     }
+
+    return {
+        users: state.auth.auth,
+    };
 
 }
 

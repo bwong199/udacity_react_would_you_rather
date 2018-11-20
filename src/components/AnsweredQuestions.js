@@ -27,7 +27,7 @@ class AnsweredQuestions extends Component {
         this.setState({ selectedPoll: selectedPoll, showPoll: true })
     }
 
-    getPoll(pollID){
+    getPoll(pollID) {
         this.props._getPoll(pollID);
     }
 
@@ -41,7 +41,7 @@ class AnsweredQuestions extends Component {
                             this.props.answeredQuestions ?
                                 this.props.answeredQuestions.map((question, index) => {
                                     return (
-                                        <div>
+                                        <div key={index}>
                                             {question.author} asks
                                             Would you rather:
                                     <br />
@@ -52,7 +52,7 @@ class AnsweredQuestions extends Component {
                                             <br />
                                             {/* <a onClick={() => this.showPoll(question.id)}>Show Poll</a> */}
 
-                                            <Link onClick={ () => this.getPoll(question.id)} to={`pollResult/${question.id}`}>
+                                            <Link onClick={() => this.getPoll(question.id)} to={`pollResult/${question.id}`}>
                                                 Show results
                                             </Link>
                                             <br />
@@ -97,7 +97,6 @@ function mapStateToProps(state) {
 
     if (state.auth.user && state.questions.questions) {
         let answered = state.auth.user.answers
-
 
         const answers = Object.keys(answered)
         const questions = state.questions.questions;

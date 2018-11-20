@@ -2,7 +2,6 @@ import { SAVE_QUESTION, GET_QUESTIONS, SAVE_ANSWER, GET_POLL } from '../actions'
 import _ from 'lodash';
 
 export default function (state = {}, action) {
-    console.log(action);
     switch (action.type) {
         case SAVE_QUESTION:
             var questions = action.payload.questions
