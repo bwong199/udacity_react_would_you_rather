@@ -13,14 +13,6 @@ class Home extends Component {
         }
     }
 
-    componentDidMount() {
-
-        console.log('component did mount');
-        // this.props._getQuestions();
-        // this.props._getUsers();
-    }
-
-
     handleClick(show) {
         this.setState({ showAnsweredQuestions: show })
     }
@@ -34,8 +26,8 @@ class Home extends Component {
 
                 {
                     this.state.showAnsweredQuestions ?
-                        <AnsweredQuestions /> :
-                        <UnansweredQuestions />
+                        <AnsweredQuestions history= {this.props.history}/> :
+                        <UnansweredQuestions history= {this.props.history}/>
                 }
             </div>
         )
@@ -44,11 +36,6 @@ class Home extends Component {
 
 
 function mapStateToProps(state) {
-    // console.log(state.questions);
-
-    // if(Object.keys(state.questions).length == 0){
-    //     console.log('empty');
-    // }
 
     return {
         questions: state.questions

@@ -20,7 +20,10 @@ class UnansweredQuestions extends Component {
     }
 
     selectPoll(questionID, choice) {
-        this.props._saveQuestionAnswer(this.props.thisUser, questionID, choice, this.props.history);
+        this.props._saveQuestionAnswer(this.props.thisUser, questionID, choice, this.props.history, () => {
+            // debugger;
+             this.props.history.push(`/pollResult/${questionID}`)            
+        });
     }
 
     render() {
@@ -62,9 +65,7 @@ class UnansweredQuestions extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log('before', state);
     if (state.auth.user) {
-        console.log('after', state);
 
         let answered = state.auth.user.answers
 

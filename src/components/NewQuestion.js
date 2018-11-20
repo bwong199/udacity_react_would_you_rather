@@ -16,7 +16,6 @@ class NewQuestion extends Component {
     }
 
     submit() {
-        console.log(this.state);
 
         var question = {
             author: this.props.author ? this.props.author : '',
@@ -26,7 +25,6 @@ class NewQuestion extends Component {
 
         this.props._saveQuestion(question, this.props.history, () => {
             this.props._getQuestions();
-            // this.props._getUsers();
         });
 
         this.setState({ option1: ""})
@@ -77,8 +75,6 @@ class NewQuestion extends Component {
 }
 
 function mapStateToProps(state) {
-
-    console.log(state);
 
     return {
         errorMessage: state.auth.error,

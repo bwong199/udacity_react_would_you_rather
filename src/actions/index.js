@@ -150,7 +150,7 @@ export function _getQuestions(){
     }
 }
 
-export function _saveQuestionAnswer(authedUser, qid, answer, history){
+export function _saveQuestionAnswer(authedUser, qid, answer, history, callback){
     return function (dispatch) {
         new Promise((res, rej) => {
 
@@ -165,12 +165,16 @@ export function _saveQuestionAnswer(authedUser, qid, answer, history){
                     selectedUser.answers[qid] = "optionTwo"
                 }        
 
+                res();
+
         }, 500);   
         
         }).then(dispatch({
             type: SAVE_ANSWER,
             payload: [questions, users]
-        }))
+        })).then(function(){
+            callback()
+        });
     }
 }
 
@@ -195,7 +199,6 @@ function formatQuestion({ optionOneText, optionTwoText, author }) {
 }
 
 export function _saveQuestion(question, history, callback) {
-
     return function (dispatch) {
         new Promise((res, rej) => {
             const authedUser = question.author;
