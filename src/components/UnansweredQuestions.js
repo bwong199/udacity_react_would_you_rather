@@ -72,6 +72,12 @@ function mapStateToProps(state) {
         const questions = state.questions.questions;
 
         var results = questions.filter(item => !answers.includes(item.id))
+        
+        results = results.sort(function(a, b) {
+            return b.timestamp - a.timestamp;
+        });
+        
+
         return {
             unansweredQuestions: results,
             users: state.auth.auth,

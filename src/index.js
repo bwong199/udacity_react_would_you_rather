@@ -6,6 +6,7 @@ import NewQuestion from './components/NewQuestion';
 import Navbar from './components/Navbar';
 import Signin from './components/Signin';
 import Home from './components/Home';
+import Invalid from './components/Invalid';
 
 import PollResult from './components/PollResult';
 
@@ -49,6 +50,7 @@ ReactDOM.render
                     <Route path="/leaderboard" component={requireAuth(Leaderboard)} exact />
                     <Route path="/add" component={requireAuth(NewQuestion)} exact />
                     <Route path="/questions/:id" component={requireAuth(PollResult)} exact />
+                    <Route path="/invalid" component={requireAuth(Invalid)} exact />
 
                 </Switch>
             </div>

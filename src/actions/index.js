@@ -139,6 +139,17 @@ export function _getUsers() {
     }
 }
 
+export function _getQuestionsAsync(){
+    return function (dispatch) {
+        new Promise((res, rej) => {
+            setTimeout(() => res({ ...questions }), 1000)
+        }).then(dispatch({
+            type: GET_QUESTIONS,
+            questions
+        }))
+    }
+}
+
 export function _getQuestions(){
     return function (dispatch) {
         new Promise((res, rej) => {

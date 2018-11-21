@@ -106,6 +106,10 @@ function mapStateToProps(state) {
 
         var results = questions.filter(item => answers.includes(item.id))
 
+        results = results.sort(function(a, b) {
+            return b.timestamp - a.timestamp;
+        });
+        
         return {
             answeredQuestions: results,
             users: state.auth.uses

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/index.css';
 import { connect } from 'react-redux';
-import { _getQuestions, _getUsers, _getPoll } from '../actions';
+import { _getQuestions, _getUsers, _getPoll, _getQuestionsAsync } from '../actions';
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
 
@@ -11,9 +11,33 @@ class PollResult extends Component {
 
     }
 
+    // componentWillReceiveProps(){
+    //     console.log('componentn will receive props')
+
+    //     var questionIDs = []
+    //     debugger;
+    
+    // }
+
+    componentDidUpdate(){
+        console.log(this.props);
+
+        const paramID = this.props.match.params.id;
+        var questionIDs = [];
+
+        this.props.allQuestions.forEach(element => {
+            questionIDs.push(element.id);
+        });
+
+        if(!questionIDs.includes(paramID)){
+            this.props.history.push('/invalid');
+        }
+
+    }
     componentWillMount() {
         this.props._getQuestions();
         this.props._getUsers();
+
     }
 
     componentDidMount() {
@@ -22,10 +46,11 @@ class PollResult extends Component {
         this.setState({ pollID: id })
 
         this.props._getPoll(id, function () {
-
             var selectedPoll = this.props.answeredQuestions.find(obj => obj.id == id);
             this.setState({ selectedPoll: selectedPoll, showPoll: true })
         });
+
+
 
     }
 
@@ -87,11 +112,9 @@ class PollResult extends Component {
 
 
 function mapStateToProps(state) {
-
     console.log(state);
     if (state.auth.user && state.questions.questions) {
         let answered = state.auth.user.answers
-
 
         const answers = Object.keys(answered)
         const questions = state.questions.questions;
@@ -111,16 +134,16 @@ function mapStateToProps(state) {
             } else {
                 optionSelected = 2;
             }
-    
             selectedPoll['selected'] = optionSelected
-        }
+        } 
 
 
         
         return {
             answeredQuestions: results,
             users: state.auth.uses,
-            selectedPoll: selectedPoll
+            selectedPoll: selectedPoll, 
+            allQuestions: questions
         };
     }
     return {
