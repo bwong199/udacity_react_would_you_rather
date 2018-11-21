@@ -47,7 +47,10 @@ class Navbar extends Component {
 
     }
     return [
+      <div key="1">
       <Link className="link" to="/signin" onClick={this.signedInUser}>Sign In</Link>
+
+      </div>
 
      ]
   }

@@ -67,7 +67,7 @@ class PollResult extends Component {
                                 <div>
                                     <h1>Results</h1>
 
-                                    <h2>Would you rather {this.props.selectedPoll.optionOne.text} </h2><span class="selected">{this.props.selectedPoll.selected == 1 ? "This User Selected This!" : ""} </span>
+                                    <h2>Would you rather {this.props.selectedPoll.optionOne.text} </h2><span className="selected">{this.props.selectedPoll.selected == 1 ? "This User Selected This!" : ""} </span>
                                     <p>{this.props.selectedPoll.optionOne.votes.length}
                                         /  {this.props.selectedPoll.optionOne.votes.length + this.props.selectedPoll.optionTwo.votes.length} votes</p>
 
@@ -81,7 +81,7 @@ class PollResult extends Component {
 
                                     <br />
 
-                                    <h2>Would you rather {this.props.selectedPoll.optionTwo.text} </h2><span class="selected">{this.props.selectedPoll.selected == 1 ?  "": "This User Selected This!" }</span> 
+                                    <h2>Would you rather {this.props.selectedPoll.optionTwo.text} </h2><span className="selected">{this.props.selectedPoll.selected == 1 ?  "": "This User Selected This!" }</span> 
                                     <p>{this.props.selectedPoll.optionTwo.votes.length}
                                         /  {this.props.selectedPoll.optionOne.votes.length + this.props.selectedPoll.optionTwo.votes.length} votes
                             </p>
@@ -93,7 +93,7 @@ class PollResult extends Component {
 
                                 </div> :
                                 <div>
-                                    <h1 class="selected">
+                                    <h1 className="selected">
                                     Error! Selected Question Not Found
 
                                     </h1>

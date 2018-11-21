@@ -53,8 +53,8 @@ class Signin extends Component {
             <select onChange={this.dropdownChange}>
               {
                 this.props.users ?
-                  this.props.users.map((user) => {
-                    return <option value={user.id}>{user.name}</option>
+                  this.props.users.map((user, index) => {
+                    return <option key={index} value={user.id}>{user.name}</option>
                   }) : <div></div>
               }
             </select>
