@@ -52,7 +52,7 @@ class AnsweredQuestions extends Component {
                                             <br />
                                             {/* <a onClick={() => this.showPoll(question.id)}>Show Poll</a> */}
 
-                                            <Link onClick={() => this.getPoll(question.id)} to={`pollResult/${question.id}`}>
+                                            <Link onClick={() => this.getPoll(question.id)} to={`questions/${question.id}`}>
                                                 Show results
                                             </Link>
                                             <br />
@@ -68,12 +68,15 @@ class AnsweredQuestions extends Component {
                                 <div>
                                     <h1>Results</h1>
 
-                                    <h2>Would you rather be {this.state.selectedPoll.optionOne.text}</h2>
+                                    <h2>Would you rather {this.state.selectedPoll.optionOne.text}</h2>
                                     <p>{this.state.selectedPoll.optionOne.votes.length}
                                         /  {this.state.selectedPoll.optionOne.votes.length + this.state.selectedPoll.optionTwo.votes.length} votes</p>
+
+                                   
+                                   
                                     <br />
 
-                                    <h2>Would you rather be {this.state.selectedPoll.optionTwo.text}</h2>
+                                    <h2>Would you rather {this.state.selectedPoll.optionTwo.text}</h2>
                                     <p>{this.state.selectedPoll.optionTwo.votes.length}
                                         /  {this.state.selectedPoll.optionOne.votes.length + this.state.selectedPoll.optionTwo.votes.length} votes
                             </p>

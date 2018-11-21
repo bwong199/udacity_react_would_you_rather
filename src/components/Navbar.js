@@ -30,7 +30,7 @@ class Navbar extends Component {
         <div key="1">
           <Link className="link" to="/home">Home</Link>
           <Link className="link" to="/leaderboard">Leader Board</Link>
-          <Link className="link" to="/newquestion">New Question</Link>
+          <Link className="link" to="/add">New Question</Link>
           <Link className="link" to="/signin" onClick={this.logout}>Sign out</Link>
           <Link className="link" to="/home">
             {this.props.user ? <div>Hello {this.props.user}</div> : <div></div>

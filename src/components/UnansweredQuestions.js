@@ -21,7 +21,7 @@ class UnansweredQuestions extends Component {
 
     selectPoll(questionID, choice) {
         this.props._saveQuestionAnswer(this.props.thisUser, questionID, choice, this.props.history, () => {
-             this.props.history.push(`/pollResult/${questionID}`)            
+             this.props.history.push(`/questions/${questionID}`)            
         });
     }
 

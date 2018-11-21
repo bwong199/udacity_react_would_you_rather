@@ -18,3 +18,8 @@
 a {
     margin-left: 20px;
 }
+
+.selected {
+    color: red;
+    font: 5px;
+}

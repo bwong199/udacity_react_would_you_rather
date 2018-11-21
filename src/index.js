@@ -47,8 +47,8 @@ ReactDOM.render
                     <Route path="/signin" component={noRequireAuth(Signin)} exact />
                     <Route path="/home" component={requireAuth(Home)} exact />
                     <Route path="/leaderboard" component={requireAuth(Leaderboard)} exact />
-                    <Route path="/newquestion" component={requireAuth(NewQuestion)} exact />
-                    <Route path="/pollResult/:id" component={requireAuth(PollResult)} exact />
+                    <Route path="/add" component={requireAuth(NewQuestion)} exact />
+                    <Route path="/questions/:id" component={requireAuth(PollResult)} exact />
 
                 </Switch>
             </div>
